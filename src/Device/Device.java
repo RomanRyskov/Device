@@ -31,13 +31,12 @@ abstract class Device implements Chargeable {
         return serialNumber.equals(device.serialNumber);
     }
 
-    // Метод hashCode
     @Override
     public int hashCode() {
         return serialNumber.hashCode();
     }
 
-    // Метод clone для создания копии устройства
+
     @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
