@@ -32,12 +32,6 @@ abstract class Device implements Chargeable {
     }
 
     @Override
-    public int hashCode() {
-        return serialNumber.hashCode();
-    }
-
-
-    @Override
     protected Object clone() throws CloneNotSupportedException {
         return super.clone();
     }
