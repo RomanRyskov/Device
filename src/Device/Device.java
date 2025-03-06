@@ -21,15 +21,6 @@ abstract class Device implements Chargeable {
         return serialNumber;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Device device = (Device) o;
-
-        return serialNumber.equals(device.serialNumber);
-    }
 
     @Override
     protected Object clone() throws CloneNotSupportedException {

@@ -1,6 +1,6 @@
 package L_03_03_2025;
 
-public class Student {
+public class Student implements Comparable<Student> {
     private String name;
     private double grade;
     private int age;
@@ -21,8 +21,12 @@ public class Student {
 
 
     @Override
-    public String toString() {
-        return "Студент: " + name + ", возраст:" + age + ", имеет средний балл: " + grade;
+    public int compareTo(Student o) {
+        int nameCompare = this.name.compareTo(o.name);
+        if(nameCompare!=0){
+            return  nameCompare;
+        }
+        return Integer.compare(this.age, o.age);
     }
 
 }

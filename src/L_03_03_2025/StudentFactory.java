@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Random;
 
 public class StudentFactory {
-   private static Random rand = new Random();
-   private static List<String> names = List.of("Вадим","Иван","Дмитрий","Олег");
+   private static final Random rand = new Random();
+   private static final List<String> names = List.of("Вадим","Иван","Дмитрий","Олег");
 
 
 
