@@ -11,6 +11,20 @@ abstract class Transport {
         this.speed = speed;
     }
 
+    public String getModel() {
+        return model;
+    }
+
+    public int getSpeed() {
+        return speed;
+    }
+
+    @Override
+    public String toString() {
+        return ": Модель= " + model + ", Скорость=" + speed + ",";
+
+    }
+
     @Override
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
