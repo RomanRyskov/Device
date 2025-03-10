@@ -8,14 +8,13 @@ public class Main {
         for (int i = 0; i < 20; i++) {
             tm.addTransport(TransportFactory.next());
         }
-        System.out.println(tm.transportList);
-        System.out.println(tm.uniqueTransportSet);
-        System.out.println(tm.uniqueTransportSet.size());
-        tm.sortTransportBySpeed();
-        System.out.println(tm.uniqueTransportSet);
-        System.out.println(tm.uniqueTransportSet.size());
+        tm.printAllTransport();
+        tm.printUniqueTransport();
         tm.sortTransportByModel();
-        System.out.println(tm.uniqueTransportSet);
-        System.out.println(tm.uniqueTransportSet.size());
+        tm.printAllTransport();
+        tm.printUniqueTransport();
+        tm.printAllTransport();
+        tm.printUniqueTransport();
+
     }
 }

@@ -7,7 +7,7 @@ public class Bike extends Transport {
 
     public Bike(String model, int speed, boolean hasSidecar) {
         super(model, speed);
-        this.hasSidecar = false;
+        this.hasSidecar = hasSidecar;
     }
 
     @Override
