@@ -5,7 +5,7 @@ public class Student implements Comparable<Student> {
     private double grade;
     private int age;
 
-    Student(String name, double grade,int age) {
+    public Student(String name, double grade, int age) {
         this.grade = grade;
         this.name = name;
         this.age = age;
@@ -19,6 +19,18 @@ public class Student implements Comparable<Student> {
         return grade;
     }
 
+    public int getAge() {
+        return age;
+    }
+
+    @Override
+    public String toString() {
+        return "Student{" +
+                "name='" + name + '\'' +
+                ", grade=" + grade +
+                ", age=" + age +
+                '}';
+    }
 
     @Override
     public int compareTo(Student o) {

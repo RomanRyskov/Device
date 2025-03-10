@@ -15,6 +15,8 @@ public class Main {
         tm.printUniqueTransport();
         tm.printAllTransport();
         tm.printUniqueTransport();
-
+        tm.sortTransportBySpeed();
+        tm.printAllTransport();
+        tm.printUniqueTransport();
     }
 }

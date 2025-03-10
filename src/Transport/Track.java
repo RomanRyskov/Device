@@ -3,8 +3,8 @@ package Transport;
 public class Track extends Transport {
     private int loadCapacity;
 
-    public Track(String model, int speed, int loadCapacity) {
-        super(model, speed);
+    public Track(String model, int speed,String licensePlate, int loadCapacity) {
+        super(model, speed, licensePlate);
         this.loadCapacity = loadCapacity;
     }
 
