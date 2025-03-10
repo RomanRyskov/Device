@@ -8,17 +8,24 @@ public class TransportManager {
     Set<Transport> uniqueTransportSet = new HashSet<Transport>();
 
 
-    void addTransport(List<Transport> ls, Set<Transport> st, Transport t) {
-        ls.add(t);
-        st.add(t);
+    void addTransport(Transport t) {
+        transportList.add(t);
+        uniqueTransportSet.add(t);
     }
 
-    void removeTransport(Transport t) {
-        transportList.remove(t);
-        uniqueTransportSet.remove(t);
+    void removeTransport(String model) {
+
     }
 
-    void sortTransportBySpeed(List<Transport> ls, Set<Transport> st) {
-        ls.sort(new speedCamparator());
+    void sortTransportBySpeed() {
+        Comparator<Transport> speedComparator = new speedComparator();
+        transportList.sort(speedComparator);
+
+    }
+    void sortTransportByModel() {
+        Comparator<Transport> modelComparator = new modelComparator();
+        transportList.sort(modelComparator);
+        uniqueTransportSet = new TreeSet<>(modelComparator);
+        uniqueTransportSet.addAll(transportList);
     }
 }

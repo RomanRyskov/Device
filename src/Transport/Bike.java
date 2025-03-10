@@ -1,5 +1,7 @@
 package Transport;
 
+import java.io.Serializable;
+
 public class Bike extends Transport {
     private boolean hasSidecar;
 
@@ -13,4 +15,8 @@ public class Bike extends Transport {
         return "Мотоцикл" + super.toString() + " наличие коляски: " + hasSidecar;
 
     }
+
 }
+
+
+

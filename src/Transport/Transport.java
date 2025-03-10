@@ -1,8 +1,10 @@
 package Transport;
 
+
+import java.util.Comparator;
 import java.util.Objects;
 
-abstract class Transport {
+public class Transport {
     private String model;
     private int speed;
 
@@ -22,18 +24,18 @@ abstract class Transport {
     @Override
     public String toString() {
         return ": Модель= " + model + ", Скорость=" + speed + ",";
-
     }
 
     @Override
     public boolean equals(Object o) {
-        if (o == null || getClass() != o.getClass()) return false;
+        if(this == o) return true;
+        if (o == null ) return false;
         Transport transport = (Transport) o;
-        return Objects.equals(model, transport.model);
+        return Objects.equals(model, transport.model) && this.getClass() == o.getClass();
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(model);
+        return Objects.hash(model, this.getClass());
     }
 }
