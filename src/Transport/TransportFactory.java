@@ -17,7 +17,13 @@ public class TransportFactory extends Transport {
         String fuelType = rand.nextBoolean() ? "Дизель" : "Бензин";
         boolean hasSidecar = rand.nextBoolean();
         int loadCapacity = rand.nextInt(500, 2000);
-        String licensePlate = String.valueOf (rand.nextInt(1000,2000));
+        char randomChar = (char) ('A' + rand.nextInt(26));
+        char randomChar2 = (char) ('A' + rand.nextInt(26));
+        int reg = rand.nextInt(1,9);
+
+
+
+        String licensePlate = String.valueOf (rand.nextInt(1000,10000))+" "+randomChar+randomChar2+"-"+String.valueOf(reg);
 
         return switch (rand.nextInt(1, 4)) {
             case 1 -> new Car(name, speed, licensePlate, fuelType);
@@ -26,5 +32,6 @@ public class TransportFactory extends Transport {
             default -> null;
         };
     }
+
 }
 
