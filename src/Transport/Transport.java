@@ -29,7 +29,7 @@ public abstract class Transport {
 
     @Override
     public String toString() {
-        return ": Модель= " + model + ", Скорость=" + speed + ",";
+        return " Номерной знак - "+ licensePlate+ ": Модель= " + model + ", Скорость=" + speed + ",";
     }
 
     @Override

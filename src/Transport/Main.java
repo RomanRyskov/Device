@@ -10,20 +10,20 @@ public class Main {
         System.out.println(tm.transportByPlate);
         System.out.println(tm.transportByType);
         System.out.println("--------------------------");
-        tm.removeTransport("HONDA");
-        tm.removeTransport("BMW");
-        System.out.println("После удаления по модели: ");
+        tm.addTransport( new Car("BMW",125, "4455 LW-3","Дизель" ));
         System.out.println(tm.transportByPlate);
         System.out.println(tm.transportByType);
         System.out.println("--------------------------");
-        tm.transportByPlate.put("4455 LW-3", new Car("BMW",125, "4455","Дизель" ));
-        tm.findTransportByPlate("4455 LW-3");
+        System.out.println(tm.findTransportByPlate("4455 LW-3"));
+        tm.removeTransport("4455 LW-3");
+        System.out.println(tm.transportByType);
+        System.out.println(tm.findTransportByPlate("4455 LW-3"));
         System.out.println("--------------------------");
-        tm.findTransportByType("Car");
+        System.out.println(tm.findTransportByType("Car"));
         System.out.println("--------------------------");
-        tm.getFastestTransportByType("Car");
-        tm.getFastestTransportByType("Bike");
-        tm.getFastestTransportByType("Track");
+        System.out.println(tm.getFastestTransportByType("Car"));
+        System.out.println("--------------------------");
+        System.out.println(tm.transportByType);
         tm.printAllTransport();
     }
 }

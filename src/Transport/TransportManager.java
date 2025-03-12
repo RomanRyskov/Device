@@ -12,65 +12,39 @@ public class TransportManager {
         transportByType.get(transport.getClass().getSimpleName()).add(transport);
     }
 
-    void removeTransport(String model) {
-        Iterator<Map.Entry<String, Transport>> it1 = transportByPlate.entrySet().iterator();
-        while (it1.hasNext()) {
-            String a = it1.next().getValue().getModel();
-            if (a.equals(model)) {
-                it1.remove();
-            }
-        }
-        Iterator<Map.Entry<String, List<Transport>>> it2 = transportByType.entrySet().iterator();
-        while (it2.hasNext()) {
-            Iterator<List<Transport>> it3 = transportByType.values().iterator();
-            while (it3.hasNext()) {
-                List<Transport> list = it3.next();
-                Iterator<Transport> it4 = list.iterator();
-                while (it4.hasNext()) {
-                    Transport a = it4.next();
-                    if (a.getModel().equals(model)) {
-                        it4.remove();
-                    }
+    void removeTransport(String LicensePlate) {
+        transportByPlate.remove(LicensePlate);
+        Iterator<Map.Entry<String, List<Transport>>> it = transportByType.entrySet().iterator();
+        while (it.hasNext()) {
+            List<Transport> list = it.next().getValue();
+            Iterator<Transport> it2 = list.iterator();
+            while (it2.hasNext()) {
+                Transport transport = it2.next();
+                if (transport.getLicensePlate().equals(LicensePlate)) {
+                    it2.remove();
                 }
             }
-            break;
         }
     }
 
-    void findTransportByPlate(String licensePlate) {
-        for (Map.Entry<String, Transport> transportEntry : transportByPlate.entrySet()) {
-            String a = transportEntry.getKey();
-            Transport transport = transportEntry.getValue();
-            if (a.equals(licensePlate)) {
-                System.out.println("Номерной знак: " + a + ", Соответсвует транспорту: " + transport);
-            }
-        }
+
+    public Transport findTransportByPlate(String licensePlate) {
+        return transportByPlate.get(licensePlate);
     }
 
-    void findTransportByType(String type) {
-        for (Map.Entry<String, List<Transport>> transportEntry : transportByType.entrySet()) {
-            String a = transportEntry.getKey();
-            List<Transport> list = transportEntry.getValue();
-            if (a.equals(type)) {
-                System.out.println("Тип : " + a + ", включает следующие траснспортные средства: " + list);
-            }
-        }
+    public List<Transport> findTransportByType(String type) {
+        return transportByType.get(type);
     }
 
-    void getFastestTransportByType(String type) {
-        for (Map.Entry<String, List<Transport>> transportEntry : transportByType.entrySet()) {
-            String a = transportEntry.getKey();
-            List<Transport> list = transportEntry.getValue();
-            Comparator<Transport> speedComparator = new speedComparator();
-            list.sort(speedComparator);
-            if (a.equals(type)) {
-                System.out.println("Самый быстрый траспорт из " + type + " это: " + list.getLast());
-            }
-        }
+    public Transport getFastestTransportByType(String type) {
+        List<Transport> list = transportByType.get(type);
+        Comparator<Transport> speedComparator = new speedComparator();
+        list.sort(speedComparator);
+        return list.getLast();
     }
 
     void printAllTransport() {
-       for (Map.Entry<String, Transport> transportEntry : transportByPlate.entrySet()) {
+        for (Map.Entry<String, Transport> transportEntry : transportByPlate.entrySet()) {
             System.out.println(transportEntry.getKey() + " : " + transportEntry.getValue());
         }
     }
