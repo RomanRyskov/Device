@@ -5,8 +5,8 @@ import java.util.Random;
 
 
 public class TransportFactory extends Transport {
-    public TransportFactory(String model, int speed,String licensePlate) {
-        super(model, speed,licensePlate);
+    public TransportFactory(String model, int speed,String licensePlate,int year) {
+        super(model, speed,licensePlate,year);
     }
     private final static Random rand = new Random();
     private final static List<String> models = List.of("BMW", "HONDA", "OPEL", "MERSEDES");
@@ -14,6 +14,7 @@ public class TransportFactory extends Transport {
     public static Transport next() {
         String name = models.get(rand.nextInt(models.size()));
         int speed = rand.nextInt(20, 200);
+        int year = rand.nextInt(2010, 2025);
         String fuelType = rand.nextBoolean() ? "Дизель" : "Бензин";
         boolean hasSidecar = rand.nextBoolean();
         int loadCapacity = rand.nextInt(500, 2000);
@@ -23,9 +24,9 @@ public class TransportFactory extends Transport {
         String licensePlate = String.valueOf (rand.nextInt(1000,10000))+" "+randomChar+randomChar2+"-"+String.valueOf(reg);
 
         return switch (rand.nextInt(1, 4)) {
-            case 1 -> new Car(name, speed, licensePlate, fuelType);
-            case 2 -> new Bike(name, speed,licensePlate, hasSidecar);
-            case 3 -> new Track(name, speed, licensePlate, loadCapacity);
+            case 1 -> new Car(name, speed, licensePlate,year, fuelType);
+            case 2 -> new Bike(name, speed,licensePlate,year, hasSidecar);
+            case 3 -> new Track(name, speed, licensePlate,year, loadCapacity);
             default -> null;
         };
     }

@@ -10,7 +10,7 @@ public class Main {
         System.out.println(tm.transportByPlate);
         System.out.println(tm.transportByType);
         System.out.println("--------------------------");
-        tm.addTransport( new Car("BMW",125, "4455 LW-3","Дизель" ));
+        tm.addTransport( new Car("BMW",125, "4455 LW-3",2025,"Дизель" ));
         System.out.println(tm.transportByPlate);
         System.out.println(tm.transportByType);
         System.out.println("--------------------------");

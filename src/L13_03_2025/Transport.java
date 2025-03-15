@@ -12,10 +12,11 @@ public abstract class Transport {
     private int year;
 
 
-    public Transport(String model, int speed, String licensePlate) {
+    public Transport(String model, int speed, String licensePlate, int year) {
         this.model = model;
         this.speed = speed;
         this.licensePlate = licensePlate;
+        this.year = year;
     }
 
     public String getLicensePlate() {
