@@ -13,7 +13,7 @@ public class TransportFactory extends Transport {
 
     public static Transport next() {
         String name = models.get(rand.nextInt(models.size()));
-        int speed = rand.nextInt(20, 200);
+        int speed = rand.nextInt(195, 201);
         String fuelType = rand.nextBoolean() ? "Дизель" : "Бензин";
         boolean hasSidecar = rand.nextBoolean();
         int loadCapacity = rand.nextInt(500, 2000);
