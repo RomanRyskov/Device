@@ -28,6 +28,7 @@ public class TransportManager {
     }
 
 
+
     public Transport findTransportByPlate(String licensePlate) {
         return transportByPlate.get(licensePlate);
     }

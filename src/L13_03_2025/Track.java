@@ -4,8 +4,8 @@ public class Track extends Transport {
     private int loadCapacity;
     private int maxSpeed;
 
-    public Track(String model, int speed,String licensePlate, int loadCapacity) {
-        super(model, speed, licensePlate);
+    public Track(String model, int speed,String licensePlate,int year, int loadCapacity) {
+        super(model, speed, licensePlate, year);
         this.loadCapacity = loadCapacity;
         this.maxSpeed = 120;
     }
