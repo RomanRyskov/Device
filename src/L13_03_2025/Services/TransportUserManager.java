@@ -1,9 +1,13 @@
-package L13_03_2025;
+package L13_03_2025.Services;
+
+import L13_03_2025.Model.Transport;
+import L13_03_2025.Comparator.SpeedComparator;
+import L13_03_2025.User;
 
 import java.util.*;
 
 public class TransportUserManager {
-    private Map<User, List<Transport>> transportByOwner = new HashMap<>();
+    public Map<User, List<Transport>> transportByOwner = new HashMap<>();
 
     public void addTransport(Transport transport) {
         transportByOwner.putIfAbsent(transport.getUser(), new ArrayList<>());

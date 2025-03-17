@@ -1,4 +1,4 @@
-package L13_03_2025;
+package L13_03_2025.Model;
 
 public class Bike extends Transport {
     private boolean hasSidecar;

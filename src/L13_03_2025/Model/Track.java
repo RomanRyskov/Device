@@ -1,4 +1,4 @@
-package L13_03_2025;
+package L13_03_2025.Model;
 
 public class Track extends Transport {
     private int loadCapacity;

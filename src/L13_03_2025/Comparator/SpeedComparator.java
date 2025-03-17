@@ -1,4 +1,6 @@
-package L13_03_2025;
+package L13_03_2025.Comparator;
+
+import L13_03_2025.Model.Transport;
 
 import java.util.Comparator;
 
