@@ -2,14 +2,20 @@ package L13_03_2025.Services;
 
 import java.util.*;
 
-import L13_03_2025.Comparator.TransportMapValueComparator;
+import L13_03_2025.Comparator.TransportMapKeyComparator;
 import L13_03_2025.Model.Transport;
 import L13_03_2025.User;
 
+import javax.imageio.ImageTranscoder;
+
 
 public class TransportService {
-    private final List<Transport> transports = new ArrayList<>();
+    private List<Transport> transports = new ArrayList<>();
     private Map<Integer, User> countCar = new HashMap<>();
+
+    public List<Transport> getTransports() {
+        return transports;
+    }
 
 
     public User findBiLicensePlate(String licensePlate) {
@@ -39,20 +45,39 @@ public class TransportService {
         }
         return byCarCount;
     }
-    public List<String> findTop5MostPopularBrands(){
-        Map<String,Integer> countModel = new HashMap<>();
 
-        for(Transport t:transports){
+    public List<String> findTop5MostPopularBrands() {
+        Map<String, Integer> countModel = new HashMap<>();
+        List<String> top5Brands = new ArrayList<>();
+        for (Transport t : transports) {
             int count = 1;
             String model = t.getModel();
-            countModel.putIfAbsent(t.getModel(),count);
-            if(countModel.containsKey(model)){
+            countModel.putIfAbsent(t.getModel(), count);
+            if (countModel.containsKey(model)) {
                 Integer sizeModel = countModel.get(model);
                 countModel.put(model, ++sizeModel);
             }
-
         }
-        return null;
+        int maxValue = 0;
+        for (Map.Entry<String, Integer> entry : countModel.entrySet()) {
+            if (entry.getValue() > maxValue) {
+                maxValue = entry.getValue();
+            }
+            for (int i = 0; i < 5; i++) {
+                Iterator<Map.Entry<String, Integer>> it = countModel.entrySet().iterator();
+                while (it.hasNext()) {
+                    if (it.next().getValue() == maxValue) {
+                        top5Brands.add(entry.getKey());
+                    }
+                }
+                if (top5Brands.size() > 5) {
+                    break;
+                }
+                maxValue --;
+            }
+        }
+        return top5Brands;
     }
+
 }
 
