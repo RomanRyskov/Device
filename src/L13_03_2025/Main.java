@@ -13,6 +13,7 @@ public class Main {
         for(int i = 0; i<100; i++) {
             ts.getTransports().add(TransportFactory.next());
         }
+        System.out.println(ts.getTransports());
         System.out.println(ts.findTop5MostPopularBrands());
     }
 }

@@ -14,7 +14,7 @@ public class TransportFactory extends Transport {
         super(model, speed,licensePlate,year);
     }
     private final static Random rand = new Random();
-    private final static List<String> models = List.of("BMW", "HONDA", "OPEL", "MERSEDES","Ferrari","PORSHE","SUZUKI");
+    private final static List<String> models = List.of("BMW", "HONDA", "OPEL", "MERSEDES","FERRARI","PORSHE","SUZUKI");
 
     public static Transport next() {
         String name = models.get(rand.nextInt(models.size()));

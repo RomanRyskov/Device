@@ -10,13 +10,12 @@ import javax.imageio.ImageTranscoder;
 
 
 public class TransportService {
-    private List<Transport> transports = new ArrayList<>();
-    private Map<Integer, User> countCar = new HashMap<>();
+    private final List<Transport> transports = new ArrayList<>();
+
 
     public List<Transport> getTransports() {
         return transports;
     }
-
 
     public User findBiLicensePlate(String licensePlate) {
         for (Transport t : transports) {
@@ -28,6 +27,7 @@ public class TransportService {
     }
 
     public Map<String, List<User>> groupOwnersByCarCount() {
+        Map<Integer, User> countCar = new HashMap<>();
         Map<String, List<User>> byCarCount = Map.of("1-2 машины", new ArrayList<>(),
                 "3-5 машины", new ArrayList<>(),
                 "6 и более машин", new ArrayList<>());
@@ -49,35 +49,23 @@ public class TransportService {
     public List<String> findTop5MostPopularBrands() {
         Map<String, Integer> countModel = new HashMap<>();
         List<String> top5Brands = new ArrayList<>();
+        int maxValue = 0;
         for (Transport t : transports) {
-            int count = 1;
             String model = t.getModel();
-            countModel.putIfAbsent(t.getModel(), count);
+            countModel.putIfAbsent(t.getModel(), 1);
             if (countModel.containsKey(model)) {
-                Integer sizeModel = countModel.get(model);
-                countModel.put(model, ++sizeModel);
+                int count = countModel.get(model);
+                countModel.put(model, count + 1);
             }
         }
-        int maxValue = 0;
-        for (Map.Entry<String, Integer> entry : countModel.entrySet()) {
-            if (entry.getValue() > maxValue) {
-                maxValue = entry.getValue();
-            }
-            for (int i = 0; i < 5; i++) {
-                Iterator<Map.Entry<String, Integer>> it = countModel.entrySet().iterator();
-                while (it.hasNext()) {
-                    if (it.next().getValue() == maxValue) {
-                        top5Brands.add(entry.getKey());
-                    }
-                }
-                if (top5Brands.size() > 5) {
-                    break;
-                }
-                maxValue --;
-            }
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(countModel.entrySet());
+        entryList.sort(new TransportMapKeyComparator());
+        for (int i = 0; i < Math.min(5, entryList.size()); i++) {
+            top5Brands.add(entryList.get(i).getKey());
         }
         return top5Brands;
     }
-
 }
+
+
 
