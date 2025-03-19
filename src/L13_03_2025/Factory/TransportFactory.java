@@ -1,17 +1,14 @@
 package L13_03_2025.Factory;
 
-import L13_03_2025.Model.Bike;
-import L13_03_2025.Model.Car;
-import L13_03_2025.Model.Track;
-import L13_03_2025.Model.Transport;
+import L13_03_2025.Model.*;
 
 import java.util.List;
 import java.util.Random;
 
 
 public class TransportFactory extends Transport {
-    public TransportFactory(String model, int speed,String licensePlate,int year) {
-        super(model, speed,licensePlate,year);
+    public TransportFactory(String model, int speed, String licensePlate, int year, User user) {
+        super(model, speed,licensePlate,year, user );
     }
     private final static Random rand = new Random();
     private final static List<String> models = List.of("BMW", "HONDA", "OPEL", "MERSEDES","FERRARI","PORSHE","SUZUKI");
@@ -27,11 +24,12 @@ public class TransportFactory extends Transport {
         int reg = rand.nextInt(1,9);
         int year = rand.nextInt(2000, 2025);
         String licensePlate = String.valueOf (rand.nextInt(1000,10000))+" "+randomChar+randomChar2+"-"+String.valueOf(reg);
+        User user = UserFactory.next();
 
         return switch (rand.nextInt(1, 4)) {
-            case 1 -> new Car(name, speed, licensePlate,year, fuelType);
-            case 2 -> new Bike(name, speed,licensePlate,year, hasSidecar);
-            case 3 -> new Track(name, speed, licensePlate,year, loadCapacity);
+            case 1 -> new Car(name, speed, licensePlate,year, user, fuelType);
+            case 2 -> new Bike(name, speed,licensePlate,year,user, hasSidecar);
+            case 3 -> new Track(name, speed, licensePlate,year,user, loadCapacity);
             default -> null;
         };
     }

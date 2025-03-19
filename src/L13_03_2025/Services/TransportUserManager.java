@@ -2,7 +2,7 @@ package L13_03_2025.Services;
 
 import L13_03_2025.Model.Transport;
 import L13_03_2025.Comparator.SpeedComparator;
-import L13_03_2025.User;
+import L13_03_2025.Model.User;
 
 import java.util.*;
 

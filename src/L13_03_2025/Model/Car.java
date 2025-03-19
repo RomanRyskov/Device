@@ -3,8 +3,8 @@ package L13_03_2025.Model;
 public class Car extends Transport {
     private String fuelType;
 
-    public Car(String model, int speed, String licensePlate,int year, String fuelType) {
-        super(model, speed, licensePlate,year);
+    public Car(String model, int speed, String licensePlate,int year,User user, String fuelType) {
+        super(model, speed, licensePlate,year,user);
         this.fuelType = fuelType;
     }
 

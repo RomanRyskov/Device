@@ -15,5 +15,6 @@ public class Main {
         }
         System.out.println(ts.getTransports());
         System.out.println(ts.findTop5MostPopularBrands());
+        System.out.println(ts.groupOwnersByCarCount());
     }
 }

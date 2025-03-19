@@ -1,7 +1,5 @@
 package L13_03_2025.Model;
 
-import L13_03_2025.User;
-
 import java.util.Objects;
 
 public abstract class Transport {
@@ -12,11 +10,12 @@ public abstract class Transport {
     private int year;
 
 
-    public Transport(String model, int speed, String licensePlate, int year) {
+    public Transport(String model, int speed, String licensePlate, int year, User user) {
         this.model = model;
         this.speed = speed;
         this.licensePlate = licensePlate;
         this.year = year;
+        this.user = user;
     }
 
     public int getYear() {
