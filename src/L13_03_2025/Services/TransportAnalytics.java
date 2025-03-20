@@ -1,10 +1,8 @@
-package L13_03_2025;
+package L13_03_2025.Services;
 
-import L13_03_2025.Comparator.SpeedComparator;
 import L13_03_2025.Model.Transport;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class TransportAnalytics {

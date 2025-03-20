@@ -10,13 +10,15 @@ public abstract class Transport {
     private int year;
 
 
-    public Transport(String model, int speed, String licensePlate, int year, User user) {
+    public Transport(String model, int speed, String licensePlate, int year) {
         this.model = model;
         this.speed = speed;
         this.licensePlate = licensePlate;
         this.year = year;
-        this.user = user;
+
     }
+
+    public void setUser(User user) {this.user = user;}
 
     public int getYear() {
         return year;
@@ -40,7 +42,7 @@ public abstract class Transport {
 
     @Override
     public String toString() {
-        return " Номерной знак - "+ licensePlate+ ": Модель= " + model + ", Скорость=" + speed + ",";
+        return " Номерной знак - "+ licensePlate+ ": Модель= " + model + ", Скорость=" + speed + ", "+ year + ". ";
     }
 
     @Override

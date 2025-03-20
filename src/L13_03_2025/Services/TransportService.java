@@ -3,12 +3,13 @@ package L13_03_2025.Services;
 import java.util.*;
 
 import L13_03_2025.Comparator.TransportMapKeyComparator;
+import L13_03_2025.Comparator.TransportYearCompratator;
 import L13_03_2025.Model.Transport;
 import L13_03_2025.Model.User;
 
 
 public class TransportService {
-    private final List<Transport> transports = new ArrayList<>();
+    public static final List<Transport> transports = new ArrayList<>();
 
 
     public List<Transport> getTransports() {
@@ -25,29 +26,18 @@ public class TransportService {
     }
 
     public Map<String, List<User>> groupOwnersByCarCount() {
-        Map<Integer, List<User>> countCar = new HashMap<>();
-        for (Transport t : transports) {
-            User user =  t.getUser();
-            if (user != null) {
-                countCar.putIfAbsent(1, new ArrayList<>());
-                countCar.get(1).add(user);
-            } else {
-                countCar.containsValue(user);
-            }
-        }
         Map<String, List<User>> byCarCount = Map.of("1-2 машины", new ArrayList<>(),
                 "3-5 машины", new ArrayList<>(),
                 "6 и более машин", new ArrayList<>());
-        Iterator<Map.Entry<Integer, List<User>>>  it = countCar.entrySet().iterator();
-        while (it.hasNext()) {
-            if (it.next().getKey() < 3) {
-                byCarCount.get("1-2 машины").addAll(it.next().getValue());
+        for (Transport t : transports) {
+            if (t.getUser().getCountCar() < 3) {
+                byCarCount.get("1-2 машины").add(t.getUser());
             }
-            if (it.next().getKey() > 3 && it.next().getKey() < 6) {
-                byCarCount.get("3-5 машины").addAll(it.next().getValue());
+            if (t.getUser().getCountCar() > 3 && t.getUser().getCountCar() < 6) {
+                byCarCount.get("3-5 машины").add(t.getUser());
             }
-            if (it.next().getKey() > 6) {
-                byCarCount.get("6 и более машин").addAll(it.next().getValue());
+            if (t.getUser().getCountCar() > 6) {
+                byCarCount.get("6 и более машин").add(t.getUser());
             }
         }
         return byCarCount;
@@ -57,11 +47,9 @@ public class TransportService {
         Map<String, Integer> countModel = new HashMap<>();
         List<String> top5Brands = new ArrayList<>();
         for (Transport t : transports) {
-            String model = t.getModel();
             countModel.putIfAbsent(t.getModel(), 1);
-            if (countModel.containsKey(model)) {
-                int count = countModel.get(model);
-                countModel.put(model, count + 1);
+            if (countModel.containsKey(t.getModel())) {
+                countModel.put(t.getModel(), countModel.get(t.getModel()) + 1);
             }
         }
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(countModel.entrySet());
@@ -71,7 +59,62 @@ public class TransportService {
         }
         return top5Brands;
     }
+
+    public Map<String, List<Transport>> groupByAge() {
+        Map<String, List<Transport>> mapByAge = Map.of("Новые", new ArrayList<>(), "Средние", new ArrayList<>(), "Старые", new ArrayList<>());
+        for (Transport t : transports) {
+            int age = 2025 - t.getYear();
+            if (age < 4) {
+                mapByAge.get("Новые").add(t);
+            }
+            if (age > 3 & age < 11) {
+                mapByAge.get("Средние").add(t);
+            }
+            if (age > 10) {
+                mapByAge.get("Старые").add(t);
+            }
+        }
+        return mapByAge;
+    }
+
+    public Map<String, Integer> countTransportByType() {
+        Map<String, Integer> map = new HashMap<>();
+        for (Transport t : transports) {
+            map.putIfAbsent(t.getClass().getSimpleName(), 1);
+            if (map.containsKey(t.getClass().getSimpleName())) {
+                map.put(t.getClass().getSimpleName(), map.get(t.getClass().getSimpleName()) + 1);
+            }
+        }
+        return map;
+    }
+
+    public User findOwnerWithOldestCar() {
+        int min = 2025;
+        Map<User, List<Transport>> findUserOldCar = new HashMap<>();
+        for (Transport t : transports) {
+            findUserOldCar.putIfAbsent(t.getUser(), new ArrayList<>());
+            if (findUserOldCar.containsKey(t.getUser())) {
+                findUserOldCar.get(t.getUser()).add(t);
+            }
+        }
+        Iterator<Map.Entry<User, List<Transport>>> iterator = findUserOldCar.entrySet().iterator();
+        while (iterator.hasNext()) {
+            List<Transport> list = iterator.next().getValue();
+            list.sort(new TransportYearCompratator());
+        }
+        List<Transport> sortByYear = new ArrayList<>();
+        sortByYear.sort(new TransportYearCompratator());
+        for(Map.Entry<User, List<Transport>> entry : findUserOldCar.entrySet()) {
+            sortByYear.add(entry.getValue().getLast());
+        }
+        return sortByYear.getLast().getUser();
+    }
 }
+
+
+
+
+
 
 
 

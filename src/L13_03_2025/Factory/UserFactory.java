@@ -11,6 +11,7 @@ public class UserFactory extends User {
     }
     private final static Random rand = new Random();
     private final static List<String> names = List.of("Дима", "Саша", "Рома", "Коля","Сергей");
+
     public static User next() {
         String name = names.get(rand.nextInt(names.size()));
         int age = rand.nextInt(20,65);
