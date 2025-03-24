@@ -1,4 +1,6 @@
-package OnlineShop;
+package OnlineShop.Model;
+
+import OnlineShop.Enum.TicketType;
 
 public class Ticket {
     private String buyerName;
@@ -16,4 +18,5 @@ public class Ticket {
     public TicketType getType() {
         return type;
     }
+
 }

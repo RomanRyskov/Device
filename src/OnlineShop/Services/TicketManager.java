@@ -1,4 +1,7 @@
-package OnlineShop;
+package OnlineShop.Services;
+
+import OnlineShop.Model.Ticket;
+import OnlineShop.Enum.TicketType;
 
 import java.util.*;
 
@@ -13,6 +16,7 @@ public class TicketManager {
     public void printAllSales() {
         System.out.println(soldTickets);
     }
+
     public Map<TicketType, Long> countByType() {
         Map<TicketType, Long> countByType = new HashMap<>();
         long count = 1L;
@@ -22,6 +26,7 @@ public class TicketManager {
         }
         return countByType();
     }
+
     public int totalRevenue(){
         int profit = 0;
         for(Ticket soldTicket : soldTickets){
@@ -29,6 +34,7 @@ public class TicketManager {
         }
         return profit;
     }
+
     public Set<String> getVIPBuyers(){
      Set<String> vipBuyers = new HashSet<>();
      for(Ticket soldTicket : soldTickets){
@@ -38,4 +44,5 @@ public class TicketManager {
      }
      return vipBuyers;
     }
+
 }

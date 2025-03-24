@@ -1,4 +1,4 @@
-package OnlineShop;
+package OnlineShop.Enum;
 
 public enum TicketType {
     VIP(1000, "Зал с мягкими седеньями"),
