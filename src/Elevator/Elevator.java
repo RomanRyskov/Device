@@ -7,7 +7,7 @@ public class Elevator {
     private final int maxCapacity = 6;
     Queue<String> elevator = new LinkedList<>();
 
-    public void enter(String person) {
+    public void enter   (String person) {
         if (isFull()) {
             System.out.println("Нету места, лифт полный");
         } else {

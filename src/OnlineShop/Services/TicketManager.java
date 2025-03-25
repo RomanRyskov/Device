@@ -8,7 +8,6 @@ import java.util.*;
 public class TicketManager {
     private List<Ticket> soldTickets = new ArrayList<>();
 
-
     public void sellTicket(String name, TicketType type) {
         soldTickets.add(new Ticket(name, type));
     }
@@ -18,13 +17,13 @@ public class TicketManager {
     }
 
     public Map<TicketType, Long> countByType() {
-        Map<TicketType, Long> countByType = new HashMap<>();
-        long count = 1L;
+        Map<TicketType, Long> countType = new HashMap<>();
+        long count = 0;
         for (Ticket soldTicket : soldTickets) {
-            countByType().putIfAbsent(soldTicket.getType(), count);
-            countByType().put(soldTicket.getType(), countByType().get(soldTicket.getType()) + 1);
+            countType.putIfAbsent(soldTicket.getType(), count);
+            countType.put(soldTicket.getType(), countType.get(soldTicket.getType()) + 1);
         }
-        return countByType();
+        return countType;
     }
 
     public int totalRevenue(){

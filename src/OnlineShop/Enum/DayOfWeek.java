@@ -7,7 +7,7 @@ public enum DayOfWeek {
     THURSDAY(20),
     FRIDAY(20),
     SATURDAY(20),
-    SUNDAY(20);
+    SUNDAY(50);
 
     private final int discountPercent;
 

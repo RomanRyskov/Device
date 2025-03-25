@@ -10,7 +10,7 @@ public class Main {
         elevator.enter("Маша");
         System.out.println("Из лифта выходит: " + elevator.exit());
         System.out.println("Следующий из лифта выходит: " + elevator.peekNextToExit());
-        System.out.println("Сейчас в лифте "+elevator.getCurrentPassenger());
+        System.out.println("Сейчас в лифте " + elevator.getCurrentPassenger());
         elevator.exit();
 
     }
