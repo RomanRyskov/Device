@@ -1,21 +1,27 @@
 package Lottotron;
 
+
+import Lottotron.Factory.ParticipantFactory;
+import Lottotron.Model.Participant;
+import Lottotron.Servises.LotteryMachine;
+
 public class Main {
     public static void main(String[] args) {
-      LotteryMachine<String> lotteryMachine = new LotteryMachine<>();
-      lotteryMachine.add("Дима");
-      lotteryMachine.add("Саша");
-      lotteryMachine.add("Ира");
-      lotteryMachine.add("Валера");
-      lotteryMachine.add("Наташа");
+        LotteryMachine<Participant> lotto = new LotteryMachine<>();
+        for (int i = 0; i < 20; i++) {
+            lotto.add(ParticipantFactory.next());
+        }
 
-      String name = lotteryMachine.pick();
-      while (name != null){
-          System.out.println("Выбран " + name);
-      }
-      lotteryMachine.reset();
+        System.out.println("🎰 Первый розыгрыш:");
 
+        for(int i = 0; i<2; i++){
+            System.out.println(lotto.pick());
+        }
 
+        System.out.println("\n🔁 Новый розыгрыш:");
+        lotto.reset();
 
     }
 }
+
+
