@@ -12,14 +12,18 @@ public class Main {
             lotto.add(ParticipantFactory.next());
         }
 
-        System.out.println("🎰 Первый розыгрыш:");
-
-        for(int i = 0; i<2; i++){
-            System.out.println(lotto.pick());
+        for (int i = 1; i < 10; i++) {
+            System.out.println("🎰 " + i + " розыгрыш:");
+            while (lotto.getCount() > 0) {
+                System.out.println(lotto.pick());
+            }
+            lotto.reset();
         }
-
-        System.out.println("\n🔁 Новый розыгрыш:");
-        lotto.reset();
+        System.out.println("________________________________");
+        System.out.println("Статистика по победителям:");
+        System.out.println(lotto.ageToWinners());
+        System.out.println("Статистика по полу:");
+        System.out.println(lotto.sexToWinnersCount());
 
     }
 }

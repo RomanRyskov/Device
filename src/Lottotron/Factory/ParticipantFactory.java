@@ -10,8 +10,8 @@ public class ParticipantFactory extends Participant {
     public ParticipantFactory(int passportId, String name, int age, String gender) {
         super(passportId, name, age, gender);
     }
-    private static Random rand = new Random();
-    private static List<String> participants = List.of("Александра","Дарья","Дмитрий","Роман","Екатерина","Александра");
+    private static final Random rand = new Random();
+    private static final List<String> participants = List.of("Александра","Дарья","Дмитрий","Роман","Екатерина","Александра");
 
 
     public static Participant next(){
