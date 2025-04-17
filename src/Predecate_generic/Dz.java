@@ -96,7 +96,7 @@ public class Dz {
         return count;
     }
 
-    public static <T extends Comparable<T>> boolean ObjInArray (T[] array, T t) {
+    public static <T extends Comparable<T>> boolean objInArray (T[] array, T t) {
         for (T t1 : array) {
             if (t.equals(t1)) {
                 return true;
@@ -105,7 +105,7 @@ public class Dz {
         return false;
     }
 
-    public static <T extends Comparable<T>> List<T> ArrayToList(T[] array) {
+    public static <T extends Comparable<T>> List<T> arrayToList(T[] array) {
         List<T> list = new ArrayList<>();
         for (T t : array) {
             list.add(t);
@@ -119,10 +119,7 @@ public class Dz {
     }
 
     public static <T extends Comparable<T>> int findIndex(List<T> list, T t) {
-        if(!list.contains(t)){
-            return -1;
-        }
-        return list.indexOf(t);
+            return list.indexOf(t);
     }
 
     public static <T extends Comparable<T>> void addList(List<T> list, List<T> dest) {
