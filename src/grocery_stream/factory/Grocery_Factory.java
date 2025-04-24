@@ -1,4 +1,7 @@
-package grocery_stream;
+package grocery_stream.factory;
+
+import grocery_stream.model.GroceryItem;
+import grocery_stream.num.Category;
 
 import java.util.List;
 import java.util.Map;
@@ -19,8 +22,18 @@ public class Grocery_Factory extends GroceryItem {
             Category.FRUIT, List.of("Яблоко", "Банан"),
             Category.VEGETABLE, List.of("Салат", "Нут"));
 
-    public GroceryItem next(){
-
+    public static GroceryItem next() {
+        Category category = map.keySet().stream()
+                .skip(rand.nextInt(map.size()))
+                .findFirst()
+                .orElseThrow();
+        String name = map.get(category).stream()
+                .skip(rand.nextInt(map.get(category).size()))
+                .findFirst()
+                .orElseThrow();
+        double price = rand.nextInt(100);
+        boolean perishable = rand.nextBoolean();
+        return new GroceryItem(name, category, price, perishable);
     }
 }
 

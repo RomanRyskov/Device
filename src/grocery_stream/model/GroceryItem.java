@@ -1,4 +1,6 @@
-package grocery_stream;
+package grocery_stream.model;
+
+import grocery_stream.num.Category;
 
 public class GroceryItem {
     private final String name;
