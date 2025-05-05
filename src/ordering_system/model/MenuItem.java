@@ -4,14 +4,14 @@ import ordering_system.model.num.Category;
 import java.util.Objects;
 
 public class MenuItem {
-    private int id;
+    private int item_id;
     private String name;
     private double price;
     private Category category;
     private boolean flag;
 
     public MenuItem(int id, String name, double price, Category category, boolean flag) {
-        this.id = id;
+        this.item_id = id;
         this.name = name;
         this.price = price;
         this.category = category;
@@ -19,7 +19,7 @@ public class MenuItem {
     }
 
     public int getId() {
-        return id;
+        return item_id;
     }
 
     public String getName() {
@@ -42,12 +42,12 @@ public class MenuItem {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         MenuItem menuItem = (MenuItem) o;
-        return id == menuItem.id;
+        return item_id == menuItem.item_id;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id);
+        return Objects.hashCode(item_id);
     }
 
     @Override
