@@ -9,12 +9,34 @@
     width:33%;
     float: left;
     }
+    table, th, td {
+        border: 1px solid black;
+        text-align: center;
+    }
+    table {
+        width:100%;
+    }
+    th {
+        background-color: grey;
+    }
+    #style_red {
+        background-color: red;
+    }
+    tr.age {
+        background-color: aqua;
+        font-weight: bold;
+    }
+
+
 </style>
 <head>
     <meta charset="UTF-8">
     <title>Заголовок</title>
 </head>
 <body>
+<em>Здесь курсив</em>
+<strong>Тут жирный</strong><br>
+<p>Тут не жирный</p>
 <div class="container">
     <div style="background-color:#03A9F4;">
         <h2>Minsk</h2>
@@ -32,6 +54,26 @@
         <p>Население 37 млн</p>
     </div>
 </div>
+<div class="mytable">
+    <table>
+        <tr>
+            <th>Person 1</th>
+            <th>Person 2</th>
+            <th>Person 3</th>
+        </tr>
+        <tr>
+            <td id="style_red">Roma</td>
+            <td>Ivan</td>
+            <td>Sveta</td>
+        </tr>
+        <tr class="age">
+            <td>33</td>
+            <td>25</td>
+            <td>35</td>
+        </tr>
+    </table>
+</div>
+<hr color="red" size="10px">
 </body>
 </html>
 </DOCTYPE>
