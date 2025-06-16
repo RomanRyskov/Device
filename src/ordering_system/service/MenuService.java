@@ -16,5 +16,4 @@ public class MenuService {
     public void removeMenuItem(int itemId) {
         menuItems.removeIf(item -> item.getId() == itemId);
     }
-
 }
