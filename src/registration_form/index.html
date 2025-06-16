@@ -3,51 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Форма Регистрации</title>
     <link rel="stylesheet" href="styles.css">
-    <title>Форма регистрации</title>
 </head>
 <body>
+<form action="/register" method="post" class="form">
+    <h2>Регистрация</h2>
 
-<div class="form-container">
-    <form action="/register" method="post" class="form">
-        <h2>Регистрация</h2>
+    <label for="name">Ваше имя</label>
+    <input type="text" id="name" name="name" placeholder="Ваше имя" required class="input">
 
-        <label for="name">Ваше имя</label>
-        <input type="text" id="name" name="name" required placeholder="Ваше имя" class="input">
+    <label for="email">Ваш email</label>
+    <input type="email" id="email" name="email" placeholder="Ваш email" required class="input">
 
-        <label for="email">Ваш email</label>
-        <input type="email" id="email" name="email" required placeholder="Ваш email" class="input">
+    <label for="password">Ваш пароль</label>
+    <input type="password" id="password" name="password" placeholder="Ваш пароль" required class="input">
 
-        <label for="password">Ваш пароль</label>
-        <input type="password" id="password" name="password" required placeholder="Ваш пароль" class="input">
+    <fieldset>
+        <legend>Пол</legend>
+        <label><input type="radio" name="gender" value="male" checked> Мужской</label>
+        <label><input type="radio" name="gender" value="female"> Женский</label>
+    </fieldset>
 
-        <fieldset>
-            <legend>Пол</legend>
-            <label><input type="radio" name="gender" value="male" checked> Мужской</label>
-            <label><input type="radio" name="gender" value="female"> Женский</label>
-        </fieldset>
+    <fieldset>
+        <legend>Интересы</legend>
+        <label><input type="checkbox" name="interests" value="music"> Музыка</label>
+        <label><input type="checkbox" name="interests" value="sports"> Спорт</label>
+        <label><input type="checkbox" name="interests" value="reading"> Чтение</label>
+    </fieldset>
 
-        <fieldset>
-            <legend>Интересы</legend>
-            <label><input type="checkbox" name="interests" value="music"> Музыка</label>
-            <label><input type="checkbox" name="interests" value="sports"> Спорт</label>
-            <label><input type="checkbox" name="interests" value="reading"> Чтение</label>
-        </fieldset>
+    <label for="country">Страна</label>
+    <select id="country" name="country" class="input">
+        <option value="russia" selected>Россия</option>
+        <option value="usa">США</option>
+        <option value="uk">Великобритания</option>
+    </select>
 
-        <label for="country">Страна</label>
-        <select id="country" name="country" class="input">
-            <option value="ru" selected>Россия</option>
-            <option value="us">США</option>
-            <option value="de">Германия</option>
-        </select>
+    <button type="submit" class="btn">Зарегистрироваться</button>
+</form>
 
-        <button type="submit" class="btn">Зарегистрироваться</button>
-    </form>
+<dialog id="success-dialog">
+    <p>Регистрация успешна!</p>
+    <button id="close-dialog">Закрыть</button>
+</dialog>
 
-    <dialog open id="success-dialog">
-        <p>Регистрация успешна!</p>
-        <button onclick="document.getElementById('success-dialog').close()" class="close-btn">Закрыть</button>
-    </dialog>
-</div>
+<script>
+    const form = document.querySelector('.form');
+    const dialog = document.getElementById('success-dialog');
+    const closeButton = document.getElementById('close-dialog');
+
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Отменяем стандартное поведение формы
+        dialog.showModal(); // Показываем диалог
+    });
+
+    closeButton.addEventListener('click', function() {
+        dialog.close(); // Закрываем диалог
+    });
+</script>
 </body>
 </html>
