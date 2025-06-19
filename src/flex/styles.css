@@ -1,0 +1,58 @@
+body {
+    font-family: Arial, sans-serif;
+}
+.profile{
+    width: 350px;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.avatar {
+    float: left;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+}
+.name {
+    font-size: 24px; /* Крупный шрифт для имени */
+    text-align: center; /* Центрирование текста */
+}
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.info-item {
+    margin-bottom: 5px;
+}
+.description {
+
+}
+.button{
+    display: flex;
+    flex-direction:row;
+}
+.contact-button,
+.edit-button {
+    background-color: #4CAF50; /* Зеленый цвет */
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.contact-button:hover,
+.edit-button:hover {
+    background-color: #45a049; /* Темнее при наведении */
+}
