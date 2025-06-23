@@ -1,0 +1,19 @@
+.block{
+border: 2px, black, solid;
+margin: 2px;
+width: 150px;
+}
+.container{
+    display:flex;
+    height: 300px;
+    width: 300px;
+    border: 2px, black, solid;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+}
+.grow{
+flex-basis: 50px;
+order:1;
+}
