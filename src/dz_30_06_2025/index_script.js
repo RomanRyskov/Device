@@ -5,13 +5,22 @@ document.addEventListener('DOMContentLoaded', function() {
         alert("Отправить письмо на anna.ivanova@example.com?");
     });
 
-    const increaseAgeButton = document.createElement('button');
-    increaseAgeButton.textContent = 'Увеличить возраст';
-    document.body.appendChild(increaseAgeButton);
+    const ageButton = document.createElement('button');
+    ageButton.textContent = 'Увеличить возраст';
+    document.body.appendChild(ageButton);
 
     const ageElement = document.querySelector("li");
-    increaseAgeButton.addEventListener('click', () =>{
+    ageButton.addEventListener('click', () =>{
         ageElement.textContent = "Возраст: 26 лет";
+    });
+
+    const resAgeButton = document.createElement('button');
+    resAgeButton.textContent = 'Сбросить возраст';
+    document.body.appendChild(resAgeButton);
+
+    const resAgeElement = document.querySelector("li");
+    resAgeButton.addEventListener('click', () =>{
+        resAgeElement.textContent = "Возраст: 25 лет";
     });
 
     const hobbyInput = document.createElement('input');
