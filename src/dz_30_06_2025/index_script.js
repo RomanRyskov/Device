@@ -1,7 +1,7 @@
 // script.js
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', () => {
     const contactButton = document.querySelector('button'); // Получаем первую кнопку на странице
-    contactButton.addEventListener('click', function() {
+    contactButton.addEventListener('click', () => {
         alert("Отправить письмо на anna.ivanova@example.com?");
     });
 
