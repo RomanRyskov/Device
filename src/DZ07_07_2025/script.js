@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const galleryContainer = document.getElementById('gallery');
     const output = document.getElementById('output');
     const loadButton = document.getElementById('loadPhotosBtn');
-
-    // Добавляем кнопку для очистки галереи
     const clearButton = document.createElement('button');
     clearButton.textContent = 'Очистить галерею';
     clearButton.id = 'clearGalleryBtn';
@@ -57,7 +55,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     loadButton.addEventListener('click', async () => {
-        clearGallery(); // Очищаем перед загрузкой новых фотографий
+        clearGallery();
         const photos = await fetchPhotos();
         photos.forEach((photo) => {
             const card = renderPhotoCard(photo);
